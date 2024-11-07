@@ -117,61 +117,95 @@ function collectWorkExperience(): { company: string; jobTitle: string; startDate
   return workEntries;
 }
 
-// Function to generate the CV
-function generateCV() {
-  // Get form values
-  const fName = (document.getElementById("fName") as HTMLInputElement).value;
-  const lName = (document.getElementById("lName") as HTMLInputElement).value;
-  const dob = (document.getElementById("dob") as HTMLInputElement).value;
-  const gender = getSelectedGender();
-  const religion = (document.getElementById("religion") as HTMLInputElement)
-    .value;
-  const address = (document.getElementById("address") as HTMLInputElement)
-    .value;
-  const email = (document.getElementById("email") as HTMLInputElement).value;
-  const phone = (document.getElementById("phone") as HTMLInputElement).value;
-  const linkedin = (document.getElementById("linkedin") as HTMLInputElement)
-    .value;
-  const github = (document.getElementById("github") as HTMLInputElement).value;
-  const objective = (
-    document.getElementById("objective") as HTMLTextAreaElement
-  ).value;
-  const occupation = (document.getElementById("occupation") as HTMLInputElement)
-    .value;
+// Variables to store selected template and form data
+let selectedTemplate = '';
 
-  // Collect skills, education, and work experience
-  const skills = collectSkills();
-  const educationEntries = collectEducation();
-  const workEntries = collectWorkExperience();
+// Get template options and set up click event for template selection
+const templateOptions = document.querySelectorAll('.template-option');
+templateOptions.forEach(option => {
+  option.addEventListener('click', () => {
+      // Get selected template from data attribute
+      selectedTemplate = option.getAttribute('data-template')!;
+      
+      // Update UI to show the selected template
+      document.querySelectorAll('.template1, .template2, .template3').forEach(template => {
+          template.classList.remove('selected-template');
+      });
+      document.querySelector(`.${selectedTemplate}`)?.classList.add('selected-template');
+  });
+});
 
-  // Create the CV layout
-  const cvHTML = `
+// Handle form submission
+const resumeForm = document.getElementById('resume-form') as HTMLFormElement;
+resumeForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  // Collect form data
+  const formData = {
+    fName: (document.getElementById("fName") as HTMLInputElement).value,
+    lName: (document.getElementById("lName") as HTMLInputElement).value,
+    dob: (document.getElementById("dob") as HTMLInputElement).value,
+    gender: getSelectedGender(),
+    religion: (document.getElementById("religion") as HTMLInputElement).value,
+    address: (document.getElementById("address") as HTMLInputElement).value,
+    email: (document.getElementById("email") as HTMLInputElement).value,
+    phone: (document.getElementById("phone") as HTMLInputElement).value,
+    linkedin: (document.getElementById("linkedin") as HTMLInputElement).value,
+    github: (document.getElementById("github") as HTMLInputElement).value,
+    objective: (document.getElementById("objective") as HTMLTextAreaElement).value,
+    occupation: (document.getElementById("occupation") as HTMLInputElement).value,
+  
+    // Collect skills, education, and work experience
+    skills: collectSkills(),
+    educationEntries: collectEducation(),
+    workEntries: collectWorkExperience(),
+  };
+
+  // Display the selected template with form data
+  if (selectedTemplate) {
+      renderTemplate(formData);
+  } else {
+      alert("Please select a template first.");
+  }
+});
+
+// Function to render the resume based on the selected template and form data
+
+function renderTemplate(data) {
+  const resumeOutput = document.getElementById('resume-output')!;
+  // Clear any previous content
+  resumeOutput.innerHTML = '';
+
+  // Template rendering logic based on selected template
+  if (selectedTemplate === 'template1') {
+      resumeOutput.innerHTML = 
+          `
   <div class="resume-container">
       <header class="header">
-          <h1>${fName} ${lName}</h1>
-          <p>${occupation} | ${address}</p>
+          <h1>${data.fName} ${data.lName}</h1>
+          <p>${data.occupation} | ${data.address}</p>
       </header>
 
       <div class="resume-content">
           <div class="left-side">
               <section class="contact-info">
                   <h2>Contact Information</h2>
-                  <p>Email: <a href="mailto:${email}">${email}</a></p>
-                  <p>Phone: ${phone}</p>
-                  <p>LinkedIn: <a href="${linkedin}" target="_blank">LinkedIn Profile</a></p>
-                  <p>GitHub: <a href="${github}" target="_blank">GitHub Profile</a></p>
+                  <p>Email: <a href="mailto:${data.email}">${data.email}</a></p>
+                  <p>Phone: ${data.phone}</p>
+                  <p>LinkedIn: <a href="${data.linkedin}" target="_blank">LinkedIn Profile</a></p>
+                  <p>GitHub: <a href="${data.github}" target="_blank">GitHub Profile</a></p>
               </section>
 
               <section class="personal-info">
                   <h2>Personal Information</h2>
-                  <p>Date-of-birth: ${dob}</p>
-                  <p>Religion: ${religion}</p>
-                  <p>Gender: ${gender}</p>
+                  <p>Date-of-birth: ${data.dob}</p>
+                  <p>Religion: ${data.religion}</p>
+                  <p>Gender: ${data.gender}</p>
               </section>
 
               <section class="objective">
                   <h2>Objective</h2>
-                  <p>${objective}</p>
+                  <p>${data.objective}</p>
               </section>
           </div>
 
@@ -179,14 +213,14 @@ function generateCV() {
               <section class="skills">
                   <h2>Skills</h2>
                   <ul>
-                      ${skills.map(skill => `<li>${skill}</li>`).join('')}
+                      ${data.skills.map(skill => `<li>${skill}</li>`).join('')}
                   </ul>
               </section>
 
                <section class="education">
                     <h2>Education</h2>
                     <ol>
-                        ${educationEntries
+                        ${data.educationEntries
                           .map(
                             (entry) => `
                           <li>
@@ -205,7 +239,7 @@ function generateCV() {
                <section class="experience">
                     <h2>Experience</h2>
                      <ol>
-                        ${workEntries
+                        ${data.workEntries
                           .map(
                             (entry) => `
                           <li>
@@ -225,17 +259,144 @@ function generateCV() {
       </div>
 
       <footer class="footer">
-          <p>Find me on <a href="mailto:${email}">Email</a> | <a href="${github}" target="_blank">GitHub</a></p>
+          <p>Find me on <a href="mailto:${data.email}">Email</a> | <a href="${data.github}" target="_blank">GitHub</a></p>
       </footer>
-  </div>`;
+  </div>`
+      ;
+  } else if (selectedTemplate === 'template2') {
+      resumeOutput.innerHTML = `
+          <div class="template2 selected-template">
+              <header>
+                  <h1>${data.name}</h1>
+                  <h3>${data.jobTitle}</h3>
+              </header>
+              <section>
+                  <h2>Contact Information</h2>
+                  <p>${data.contact}</p>
+              </section>
+              <section>
+                  <h2>Experience</h2>
+                  <p>${data.experience}</p>
+              </section>
+              <section>
+                  <h2>Education</h2>
+                  <p>${data.education}</p>
+              </section>
+              <section>
+                  <h2>Skills</h2>
+                  <p>${data.skills}</p>
+              </section>
+          </div>
+      `;
+  } else if (selectedTemplate === 'template3') {
+      resumeOutput.innerHTML = `
+          <div class="template3 selected-template">
+              <header>
+                  <h1>${data.name}</h1>
+                  <p><strong>Job Title:</strong> ${data.jobTitle}</p>
+                  <p><strong>Contact:</strong> ${data.contact}</p>
+              </header>
+              <div class="content">
+                  <div class="section">
+                      <h3>Experience</h3>
+                      <p>${data.experience}</p>
+                  </div>
+                  <div class="section">
+                      <h3>Education</h3>
+                      <p>${data.education}</p>
+                  </div>
+                  <div class="section">
+                      <h3>Skills</h3>
+                      <p>${data.skills}</p>
+                  </div>
+              </div>
+          </div>
+        `;
+     } else if (selectedTemplate === 'template4') {
+      resumeOutput.innerHTML = 
+      `
+<div class="resume-container">
+  <header class="header">
+      <h1>${data.fName} ${data.lName}</h1>
+      <p>${data.occupation} | ${data.address}</p>
+  </header>
 
-  // Hide the form and display the CV
-  const formContainer = document.querySelector(".container") as HTMLElement;
-  formContainer.style.display = "none"; // Hide the form
-  const cvContainer = document.querySelector(".resume-container") as HTMLElement;
-  cvContainer.innerHTML = cvHTML; // Display the CV
+  <div class="resume-content">
+      <div class="left-side">
+          <section class="contact-info">
+              <h2>Contact Information</h2>
+              <p>Email: <a href="mailto:${data.email}">${data.email}</a></p>
+              <p>Phone: ${data.phone}</p>
+              <p>LinkedIn: <a href="${data.linkedin}" target="_blank">LinkedIn Profile</a></p>
+              <p>GitHub: <a href="${data.github}" target="_blank">GitHub Profile</a></p>
+          </section>
 
-}
+          <section class="personal-info">
+              <h2>Personal Information</h2>
+              <p>Date-of-birth: ${data.dob}</p>
+              <p>Religion: ${data.religion}</p>
+              <p>Gender: ${data.gender}</p>
+          </section>
 
-const generateCVBtn = document.querySelector(".generate-cv-btn") as HTMLButtonElement;
-  generateCVBtn.addEventListener("click", generateCV);
+          <section class="objective">
+              <h2>Objective</h2>
+              <p>${data.objective}</p>
+          </section>
+      </div>
+
+      <div class="right-side">
+          <section class="skills">
+              <h2>Skills</h2>
+              <ul>
+                  ${data.skills.map(skill => `<li>${skill}</li>`).join('')}
+              </ul>
+          </section>
+
+           <section class="education">
+                <h2>Education</h2>
+                <ol>
+                    ${data.educationEntries
+                      .map(
+                        (entry) => `
+                      <li>
+                          <strong>${entry.degree}</strong>
+                          <ul>
+                              <li>${entry.institution}</li>
+                      <li>${entry.year}</li>
+                          </ul>
+                      </li>`
+                      )
+                      .join('')}
+                </ol>
+                <br> 
+            </section>
+
+           <section class="experience">
+                <h2>Experience</h2>
+                 <ol>
+                    ${data.workEntries
+                      .map(
+                        (entry) => `
+                      <li>
+                          <strong>${entry.company}</strong>
+                          <ul>
+                              <li>${entry.jobTitle}</li>
+                              <li>Start Date: ${entry.startDate}</li>
+                              <li>End Date: ${entry.endDate}</li>
+                          </ul>
+                      </li>`
+                      )
+                      .join('')}
+                </ol>
+            </section>
+
+      </div>
+  </div>
+
+  <footer class="footer">
+      <p>Find me on <a href="mailto:${data.email}">Email</a> | <a href="${data.github}" target="_blank">GitHub</a></p>
+  </footer>
+</div>`
+  ;
+     }
+};

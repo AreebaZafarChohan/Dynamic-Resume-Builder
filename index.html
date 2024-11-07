@@ -1,120 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Static Resume Builder</title>
+    <link rel="stylesheet" href="main.css">
+    <title>Dynamic Resume Builder</title>
 </head>
-
 <body>
+    <header class="header">
+        <div class="resume-icon"></div>
+        <h2 class="resume-icon-text"><span>Quick</span>CV</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="templates.html">Templates</a></li>
+                <li><a href="cvGenerator.html">Generate CV</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="heading">
-        <h1>Resume Generator</h1>
-        <p>By Areeba Zafar</p>
-    </div>
+    <main>
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h5>Welcome to my <span>QuickCV </span>Generator</h5>
+            <p><span class="cv-sub-title">Create a Compelling CV</span> with QuickCV in minutes</p>
+            <p>Online resume builder</p>
+            <button><a href="templates.html">Get Started</a></button>
+        </section>
 
-    <div class="container">
-        <!-- Left Side: Personal Information -->
-        <section class="personalInfo">
-            <h2>Personal Information</h2>
+        <!-- Benefits Section -->
+        <section class="benefits-section" id="benefits">
             <div>
-                <label for="fName">First Name</label>
-                <input type="text" id="fName" placeholder="Enter your first name">
+                <img src="images/advantages2.jpg" alt="Benefits for using our resume">
             </div>
             <div>
-                <label for="lName">Last Name</label>
-                <input type="text" id="lName" placeholder="Enter your last name">
-            </div>
-            <div>
-                <label for="dob">Date of Birth</label>
-                <input type="date" id="dob">
-            </div>
-            <div class="gender-options">
-                <label>Gender:</label>
-                <input type="radio" id="male" name="gender" value="male">
-                <label for="male">Male</label>
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">Female</label>
-            </div>
-            <div>
-                <label for="religion">Religion:</label>
-                <input type="text" id="religion" placeholder="Enter your religion">
-            </div>
-            <div>
-                <label for="address">Address</label>
-                <input type="text" id="address" placeholder="Enter your address">
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email">
-            </div>
-            <div>
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" placeholder="Enter your phone number">
-            </div>
-            <div>
-                <label for="linkedin">LinkedIn Account</label>
-                <input type="url" id="linkedin" placeholder="Enter your LinkedIn URL">
-            </div>
-            <div>
-                <label for="github">GitHub Account</label>
-                <input type="url" id="github" placeholder="Enter your GitHub URL">
-            </div>
-            <div>
-                <label for="occupation">Occupation</label>
-                <input type="text" id="occupation" placeholder="Enter your occupation or professional work">
+                <h3>Benefits of Using <span>QuickCV</span></h3>
+            <ul>
+                <li><span> ☆ Quick and Easy</span> <p>Build your resume in just a few minutes</p></li>
+                <li><span>☆ Professional Templates</span><p>Choose from a variety of stylish templates</p></li>
+                <li><span>☆ Customizable Content</span> <p>Personalize each section to match your style</p></li>
+                <li><span>☆ Downloadable and Printable</span><p>Get your resume in PDF format, ready to share</p></li>
+            </ul>
             </div>
         </section>
 
-        <!-- Right Side: Objective, Skills, Education, Work Experience -->
-        <div class="right-sections">
-            <section class="objective">
-                <h2>Objective</h2>
-                <textarea id="objective" placeholder="Write your objective here..."></textarea>
-            </section>
+        <!-- How It Works Section -->
+        <section class="how-it-works-section" id="how-it-works">
+            <h3>How It Works</h3>
+            <h4>Build your job-winning resume in four simple steps</h4>
+            <ol>
+                    <li>
+                        <h5>1</h5>
+                        <img src="images/getStarted.png" alt="Get Started"/>
+                        <strong>Get Started</strong> <p>Click the "Get Started" button to begin</p></li>
+                    <li>
+                        <h5>2</h5>
+                        <img src="images/template.png" alt="Choosing a Template"/>
+                        <strong>Choose a Template</strong><p>Select from multiple professional templates</p></li>
+                    <li>
+                        <h5>3</h5>
+                        <img src="/images/form.png" alt="Filling the Form"/>
+                        <strong>Fill Out the Form</strong> <p>Enter your details and let QuickCV generate a polished resume</p></li>
+                    <li>
+                        <h5>4</h5>
+                        <img src="images/download.png" alt="Download PDF"/>
+                        <strong>Download as PDF</strong><p>Download your resume as a PDF and apply for jobs with your polished resume</p></li>
+            </ol>
+        </section>
 
-            <section class="skills">
-                <h2>Skills</h2>
-                <div id="skills-container">
-                    <!-- Skill fields will be added here -->
-                </div>
-                <button id="add-skill">Add Skill</button>
-            </section>
+        <!-- Why Choose Us Section -->
+        <section class="why-choose-us-section" id="why-choose-us">
+            <div>
+                <h3>Why Choose <span>Us?</span></h3>
+            <ul>
+                <li><strong>Fast and Efficient:</strong> Generate your professional resume in just a few minutes.</li>
+                <li><strong>User-Friendly:</strong> Simple interface that makes resume building effortless, even for beginners.</li>
+                <li><strong>Variety of Templates:</strong> Choose from a range of modern and professional templates that suit your style.</li>
+                <li><strong>Completely Customizable:</strong> Personalize every section to reflect your unique skills and experience.</li>
+                <li><strong>Download in PDF:</strong> Get your polished resume in PDF format, ready to print or share.</li>
+                <li><strong>No Hidden Fees:</strong> Create and download your resume for free with no hidden charges.</li>
+                <li><strong>Safe and Secure:</strong> Your data is safe with us; we value your privacy and security.</li>
+                <li><strong>Save Time:</strong> No need to spend hours formatting your resume—focus on what really matters.</li>
+                <li><strong>Mobile Friendly:</strong> Build your resume on the go, directly from your smartphone or tablet.</li>
+            </ul>
+            </div>
+            <img src="images/whyUs.gif" alt="Why Choose Us">
+        </section>
+    </main>
 
-            <section class="education">
-                <h2>Education</h2>
-                <div id="education-container">
-                    <!-- Education fields will be added here -->
-                </div>
-                <button id="add-education">Add Education</button>
-            </section>
-
-            <section class="workExperience">
-                <h2>Work Experience</h2>
-                <div id="work-container">
-                    <!-- Work experience fields will be added here -->
-                </div>
-                <button id="add-work">Add Work Experience</button>
-            </section>
-
-            <!-- Generate CV Button -->
-    <div class="cv-button">
-        <button class="generate-cv-btn">Generate Resume</button>
-    </div>
-
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Social Networks Section -->
+            <div class="footer-section social-networks">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://github.com/AreebaZafarChohan/portfolio-next.js.git" target="_blank">Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/areeba-zafar-973917303/?lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging_conversation_detail%3BoBeXsi05TJelFMCv%2FLg3Hw%3D%3D" target="_blank">LinkedIn</a></li>
+                    <li><a href="mailto:areebazafar715@gmail.com" target="_blank">Email</a></li>
+                </ul>
+            </div>
+    
+            <!-- Quick Links Section -->
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="templates.html">Templates</a></li>
+                    <li><a href="cvGenerator.html">Generate CV</a></li>
+                </ul>
+            </div>
+    
+            <!-- Additional Information Section -->
+            <div class="footer-section additional-info">
+                <h3>Additional Information</h3>
+                <ul>
+                    <li> <a href="#benefits">Benefits of Using QuickCV</a></li>
+                    <li> <a href="#how-it-works">How It Works</a></li>
+                    <li>  <a href="#why-choose-us">Why Choose Us</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-
-    <!-- Container Where generated resume will be displayed -->
-     <div class="resume-container">
-
-     </div>
-
+    
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 QuickCV | All rights reserved.</p>
+        </div>
+    </footer>
+    
     <script src="main.js"></script>
-
 </body>
-
 </html>

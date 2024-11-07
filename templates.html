@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="template.css">
+    <title>Dynamic Resume Builder</title>
+</head>
+<body>
+    <header class="heading">
+        <h2 class="resume-icon"> </h2>
+        <h2 class="resume-icon-text"><span>Quick</span>CV</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="templates.html">Templates</a></li>
+                <li><a href="cvGenerator.html">Generate CV</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+       <section class="template-section">
+        <div>
+            <h2>Why is QuickCV Creator the best resume builder online?</h2>
+            <h1>Select Your Resume Template</h1>
+        </div>
+        <div id="template-selection">
+            <div class="template-option" data-template="template1">
+                <img src="images/template1.jpg" alt="Template 1">
+               <div class="ok-btn">
+                <p>Template 1</p>
+                <button onclick="selectTemplate('template 1')"><a href="cvGenerator.html">Selected</a></button>
+               </div>
+            </div>
+            <div class="template-option" data-template="template2">
+                <img src="images/template2.jpg" alt="Template 2">
+                <div class="ok-btn">
+                    <p>Template 2</p>
+                    <button onclick="selectTemplate('template 2')"><a href="cvGenerator.html">Selected</a></button>
+                   </div>
+            </div>
+            <div class="template-option" data-template="template3">
+                <img src="images/template3.png" alt="Template 3">
+                <div class="ok-btn">
+                    <p>Template 3</p>
+                    <button onclick="selectTemplate('template 3')"><a href="cvGenerator.html">Selected</a></button>
+                   </div>
+            </div>
+        </div>
+       </section>
+    
+        <form id="resume-form">
+            <h2>Enter Your Details</h2>
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="text" id="jobTitle" placeholder="Job Title">
+            <input type="text" id="contact" placeholder="Contact Information">
+            <!-- Add more fields for experience, education, skills, etc. -->
+            <button type="submit">Generate Resume</button>
+        </form>
+    
+        <div id="resume-output"></div>
+    
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Social Networks Section -->
+            <div class="footer-section social-networks">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://github.com/AreebaZafarChohan/portfolio-next.js.git" target="_blank">Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/areeba-zafar-973917303/?lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging_conversation_detail%3BoBeXsi05TJelFMCv%2FLg3Hw%3D%3D" target="_blank">LinkedIn</a></li>
+                    <li><a href="mailto:areebazafar715@gmail.com" target="_blank">Email</a></li>
+                </ul>
+            </div>
+    
+            <!-- Quick Links Section -->
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="templates.html">Templates</a></li>
+                    <li><a href="cvGenerator.html">Generate CV</a></li>
+                </ul>
+            </div>
+    
+            <!-- Additional Information Section -->
+            <div class="footer-section additional-info">
+                <h3>Additional Information</h3>
+                <ul>
+                    <li> <a href="#benefits">Benefits of Using QuickCV</a></li>
+                    <li> <a href="#how-it-works">How It Works</a></li>
+                    <li>  <a href="#why-choose-us">Why Choose Us</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 QuickCV | All rights reserved.</p>
+        </div>
+    </footer>
+     <script src="main.js"></script>
+</body>
+</html>

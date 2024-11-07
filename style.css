@@ -1,25 +1,103 @@
-body {
-  font-family: Arial, sans-serif;
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  box-sizing: border-box;
 }
 
+:root {
+  --primary-color: #3B1E54;
+  --secandory-color: #9B7EBD;
+  --light-purple: #D4BEE4;
+  --text-color: #EEEEEE;
+  --bg-color: #ecd9fc;
+}
+
+body {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+}
+
+.resume-icon {
+  position: relative;
+  width: 60px;
+  height: 80px;
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(1, 1, 1, 0.4);
+  overflow: hidden; 
+}
+
+/* Folded corner */
+.resume-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-color: var(--secandory-color); 
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  border-top: 2px solid #ccc;
+  border-left: 2px solid #ccc;
+}
+
+/* Lines inside the paper */
+.resume-icon::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 8px;
+  width: 80%;
+  height: 2px;
+  background-color: var(--text-color);
+  box-shadow: 0 10px 0 var(--text-color), 0 20px 0 var(--text-color), 0 30px 0 var(--text-color); 
+}
+
+.resume-icon-text {
+  position: absolute;
+  left: 8rem;
+  top: 4rem;
+  color: var(--primary-color);
+  font-size: 2rem;
+  box-shadow: 0px 8px 10px rgba(1, 1, 1, 0.4);
+  padding: 0.5rem;
+}
+
+.resume-icon-text span {
+  color: var(--secandory-color);
+}
+ 
 .heading {
-  background-color: #007bff;
-  color: #fff;
-  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3rem;
   text-align: center;
 }
 
-.heading h1 {
-  margin: 0;
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  gap: 5rem;
+  list-style: none;
+  margin: 2rem 20rem 0 0;
 }
 
-.heading p {
-  margin: 0.4rem 0 0;
-  font-size: 1.2rem;
-  font-weight: 400;
+nav ul li a {
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 30px 10px 0px 10px;
+  color: var(--primary-color);
+  border-bottom: 2px solid transparent;
+}
+
+a:hover {
+  border-bottom: 4px solid var(--primary-color);
 }
 
 .container {
@@ -261,6 +339,47 @@ button:hover {
 }
 
 .resume-container .footer a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+}
+
+footer h3 {
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer ul li {
+  padding: 1rem;
+}
+
+footer ul li a {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  margin: 3rem;
+  font-size: 1.5rem;
+}
+
+footer ul li a:hover{
   text-decoration: underline;
 }
 
