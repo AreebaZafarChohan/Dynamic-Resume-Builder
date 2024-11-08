@@ -87,28 +87,39 @@
                 <div id="skills-container">
                     <!-- Skill fields will be added here -->
                 </div>
-                <button id="add-skill">Add Skill</button>
+                <input type="text" class="skill-input" placeholder="Enter a skill">
+                <button type="button" class="remove-btn">-</button>
+                <button id="add-skill">+</button>
             </section>
 
             <section class="education">
                 <h2>Education</h2>
                 <div id="education-container">
-                    <!-- Education fields will be added here -->
+                    <input type="text" class="education-input" placeholder="Enter degree">
+                    <input type="text" class="education-input" placeholder="Enter institution">
+                    <input type="date" class="education-input">
+                    <button type="button" class="remove-btn">-</button>
+                    <!--More Education fields will be added here -->
                 </div>
-                <button id="add-education">Add Education</button>
+                <button id="add-education">+</button>
             </section>
 
             <section class="workExperience">
                 <h2>Work Experience</h2>
                 <div id="work-container">
-                    <!-- Work experience fields will be added here -->
+                    <input type="text" class="work-input" placeholder="Enter job title">
+                    <input type="text" class="work-input" placeholder="Enter company">
+                    <input type="date" class="work-input" placeholder="Enter start date">
+                    <input type="date" class="work-input" placeholder="Enter end date">
+                    <button type="button" class="remove-btn">-</button>
+                    <!--More Work experience fields will be added here -->
                 </div>
-                <button id="add-work">Add Work Experience</button>
+                <button id="add-work">+</button>
             </section>
 
             <!-- Generate CV Button -->
     <div class="cv-button">
-        <input type="submit" class="generate-cv-btn">Generate Resume</input>
+        <button class="generate-cv-btn" id="submit-button">Generate Resume</button>
     </div>
 
         </div>

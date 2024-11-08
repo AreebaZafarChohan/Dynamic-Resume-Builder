@@ -1,3 +1,13 @@
+// Selecting the hamburger menu, navbar, and nav links
+/*const hamburger = document.querySelector('.hamburger') as HTMLElement | null;
+const navMenu = document.querySelector('nav ul') as HTMLElement | null;
+
+// Toggle class on click for responsive navigation
+hamburger?.addEventListener('click', () => {
+  navMenu?.classList.toggle('active');
+}); */
+
+
 // Function to add new skill fields
 function addSkill(): void {
   const container = document.getElementById("skills-container")!;
@@ -5,7 +15,7 @@ function addSkill(): void {
   skillDiv.classList.add("skill-entry"); // Added class for easier access
   skillDiv.innerHTML = `
         <input type="text" class="skill-input" placeholder="Enter a skill">
-        <button type="button" class="remove-btn">Remove</button>
+        <button type="button" class="remove-btn">-</button>
     `;
   container.appendChild(skillDiv);
 
@@ -25,7 +35,7 @@ function addEducation(): void {
         <input type="text" class="education-input" placeholder="Enter degree">
         <input type="text" class="education-input" placeholder="Enter institution">
         <input type="date" class="education-input">
-        <button type="button" class="remove-btn">Remove</button>
+        <button type="button" class="remove-btn">-</button>
     `;
   container.appendChild(educationDiv);
 
@@ -48,7 +58,7 @@ function addWorkExperience(): void {
         <input type="text" class="work-input" placeholder="Enter company">
         <input type="date" class="work-input" placeholder="Enter start date">
         <input type="date" class="work-input" placeholder="Enter end date">
-        <button type="button" class="remove-btn">Remove</button>
+        <button type="button" class="remove-btn">-</button>
     `;
   container.appendChild(workDiv);
 
@@ -117,67 +127,37 @@ function collectWorkExperience(): { company: string; jobTitle: string; startDate
   return workEntries;
 }
 
-// Variables to store selected template and form data
-let selectedTemplate = '';
 
-// Get template options and set up click event for template selection
-const templateOptions = document.querySelectorAll('.template-option');
-templateOptions.forEach(option => {
-  option.addEventListener('click', () => {
-      // Get selected template from data attribute
-      selectedTemplate = option.getAttribute('data-template')!;
-      
-      // Update UI to show the selected template
-      document.querySelectorAll('.template1, .template2, .template3').forEach(template => {
-          template.classList.remove('selected-template');
-      });
-      document.querySelector(`.${selectedTemplate}`)?.classList.add('selected-template');
-  });
-});
+// Collect form data
+let formData: Object | undefined = {
+  fName: (document.getElementById("fName") as HTMLInputElement).value,
+  lName: (document.getElementById("lName") as HTMLInputElement).value,
+  dob: (document.getElementById("dob") as HTMLInputElement).value,
+  gender: getSelectedGender(),
+  religion: (document.getElementById("religion") as HTMLInputElement).value,
+  address: (document.getElementById("address") as HTMLInputElement).value,
+  email: (document.getElementById("email") as HTMLInputElement).value,
+  phone: (document.getElementById("phone") as HTMLInputElement).value,
+  linkedin: (document.getElementById("linkedin") as HTMLInputElement).value,
+  github: (document.getElementById("github") as HTMLInputElement).value,
+  objective: (document.getElementById("objective") as HTMLTextAreaElement).value,
+  occupation: (document.getElementById("occupation") as HTMLInputElement).value,
 
-// Handle form submission
-const resumeForm = document.getElementById('resume-form') as HTMLFormElement;
-resumeForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-
-  // Collect form data
-  const formData = {
-    fName: (document.getElementById("fName") as HTMLInputElement).value,
-    lName: (document.getElementById("lName") as HTMLInputElement).value,
-    dob: (document.getElementById("dob") as HTMLInputElement).value,
-    gender: getSelectedGender(),
-    religion: (document.getElementById("religion") as HTMLInputElement).value,
-    address: (document.getElementById("address") as HTMLInputElement).value,
-    email: (document.getElementById("email") as HTMLInputElement).value,
-    phone: (document.getElementById("phone") as HTMLInputElement).value,
-    linkedin: (document.getElementById("linkedin") as HTMLInputElement).value,
-    github: (document.getElementById("github") as HTMLInputElement).value,
-    objective: (document.getElementById("objective") as HTMLTextAreaElement).value,
-    occupation: (document.getElementById("occupation") as HTMLInputElement).value,
-  
-    // Collect skills, education, and work experience
-    skills: collectSkills(),
-    educationEntries: collectEducation(),
-    workEntries: collectWorkExperience(),
-  };
-
-  // Display the selected template with form data
-  if (selectedTemplate) {
-      renderTemplate(formData);
-  } else {
-      alert("Please select a template first.");
-  }
-});
+  // Collect skills, education, and work experience
+  skills: collectSkills(),
+  educationEntries: collectEducation(),
+  workEntries: collectWorkExperience(),
+};
 
 // Function to render the resume based on the selected template and form data
 
-function renderTemplate(data) {
+function renderTemplate(data, templateId) {
   const resumeOutput = document.getElementById('resume-output')!;
   // Clear any previous content
   resumeOutput.innerHTML = '';
 
   // Template rendering logic based on selected template
-  if (selectedTemplate === 'template1') {
+  if (templateId === 'template1') {
       resumeOutput.innerHTML = 
           `
   <div class="resume-container">
@@ -263,7 +243,7 @@ function renderTemplate(data) {
       </footer>
   </div>`
       ;
-  } else if (selectedTemplate === 'template2') {
+  } else if (templateId === 'template2') {
       resumeOutput.innerHTML = `
           <div class="template2 selected-template">
               <header>
@@ -288,7 +268,7 @@ function renderTemplate(data) {
               </section>
           </div>
       `;
-  } else if (selectedTemplate === 'template3') {
+  } else if (templateId === 'template3') {
       resumeOutput.innerHTML = `
           <div class="template3 selected-template">
               <header>
@@ -312,7 +292,7 @@ function renderTemplate(data) {
               </div>
           </div>
         `;
-     } else if (selectedTemplate === 'template4') {
+     } else if (templateId === 'template4') {
       resumeOutput.innerHTML = 
       `
 <div class="resume-container">
@@ -400,3 +380,38 @@ function renderTemplate(data) {
   ;
      }
 };
+
+// Variables to store selected template and form data
+let selectedTemplate = '';
+
+// Get template options and set up click event for template selection
+function handleTamplateSelection(buttonIds:string[]): string | undefined {
+  let selectedId: string| undefined;
+
+  buttonIds.forEach((id) => {
+    const button = document.getElementById(id);
+    if (button) {
+      button.addEventListener('click', () => {
+        selectedId = id;
+        renderTemplate(formData, selectedId);
+        selectedTemplate = selectedId;
+      });
+    }
+  });
+  return selectedId;
+}
+
+// Reference to the submit button
+const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
+
+// Submit handler
+submitButton.addEventListener('click', (event) => {
+  if (!selectedTemplate) {
+    alert("Please select a template before submitting.");
+    event.preventDefault(); // Stop form submission
+    return;
+  }
+
+  const buttonIds = ['template-1','template-2','template-3','template-4'];
+  handleTamplateSelection(buttonIds);
+});

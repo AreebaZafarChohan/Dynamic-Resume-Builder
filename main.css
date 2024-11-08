@@ -79,6 +79,23 @@ body {
     color: var(--secandory-color);
 }
 
+.hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 0 3rem;
+    padding-top: 4rem;
+
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 5px;
+    transition: 0.4s;
+}
+
+
 nav ul {
     display: flex;
     flex-direction: row;
@@ -160,7 +177,7 @@ button:hover {
 }
 
 .benefits-section img {
-    width: 800px;
+    width: 40rem;
     border-radius: 3%;
     opacity: 80%;
 }
@@ -336,7 +353,7 @@ footer ul {
 }
 
 footer ul li {
-    padding: 1rem;
+    padding: 0.6rem;
 }
 
 footer ul li a {
@@ -352,4 +369,91 @@ footer ul li a {
 
 footer ul li a:hover{
     text-decoration: underline;
+}
+
+@media (max-width:1556px) {
+    .benefits-section {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .how-it-works-section ol {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width:1335px) {
+    .how-it-works-section ol {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    footer h3 {
+        font-size: 1.5rem;
+    }
+
+    footer ul li a {
+        font-size: 1.2rem;
+    }
+    
+    .footer-bottom {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width:1263px) {
+    .header {
+        gap: 10rem;
+    }
+
+    nav ul {
+        gap: 2.5rem;
+    }
+    nav ul li a {
+        font-size: 20px;
+        font-weight: bold;
+        padding: 30px 0px ;
+        padding-bottom: 0;
+    }
+
+
+
+    .why-choose-us-section {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .why-choose-us-section img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1065px) {
+    nav ul {
+        display: none; 
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li {
+        padding: 1rem 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+}
+
+nav ul.active {
+    display: flex;
+    flex-direction: column;
 }
