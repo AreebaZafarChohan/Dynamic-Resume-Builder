@@ -235,6 +235,44 @@ footer ul li a:hover {
   text-decoration: underline;
 }
 
+
+/* Styles for locked templates */
+.template-option .locked {
+  filter: blur(4px); /* Apply a slight blur */
+  position: relative;
+}
+
+/* Overlay for locked templates */
+.template-option .locked::after {
+  content: 'Locked';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Optional: Disable click on locked templates */
+.template-option .locked + .ok-btn {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.locked-p {
+  position: relative;
+  top: -22rem;
+}
+
+.locked-p p {
+  color: #000000;
+}
+
 @media (max-width:1675px) {
   .template-section {
     margin: 6rem 4rem;

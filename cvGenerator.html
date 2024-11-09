@@ -30,7 +30,7 @@
         </nav>
     </header>
 
-    <form class="container" id="resume-form">
+    <div class="container" id="resume-form">
         <!-- Left Side: Personal Information -->
         <section class="personalInfo">
             <h2>Personal Information</h2>
@@ -85,8 +85,8 @@
                 <input type="url" id="github" placeholder="Enter your GitHub URL">
             </div>
             <div class="upload-image">
-                <label for="image">Upload Image</label>
-                <input type="file" id="fileInput">
+                <label for="profilePic">Upload Image</label>
+                <input type="file" id="profilePic" name="profilePic" accept="image/*">
             </div>
             </div>
         </section>
@@ -102,6 +102,7 @@
                 <h2>Skills</h2>
                 <div id="skills-container">
                     <!-- Skill fields will be added here -->
+                
                 </div>
                 <input type="text" class="skill-input" placeholder="Enter a skill">
                 <button type="button" class="remove-btn">_</button>
@@ -135,11 +136,16 @@
 
             <!-- Generate CV Button -->
     <div class="cv-button">
-        <button class="generate-cv-btn" id="submit-button">Generate Resume</button>
+        <button class="generate-cv-btn" >Generate Resume</button>
     </div>
 
         </div>
-    </form>
+    </div>
+
+    <!-- Container Where generated resume will be displayed -->
+<div class="resume-output">
+
+</div>
 
     <footer class="footer">
         <div class="footer-container">
@@ -179,12 +185,6 @@
             <p>&copy; 2024 QuickCV | All rights reserved.</p>
         </div>
     </footer>
-
-
-    <!-- Container Where generated resume will be displayed -->
-     <div class="resume-output">
-
-     </div>
 
     <script src="main.js"></script>
 

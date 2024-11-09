@@ -128,72 +128,85 @@ function collectWorkExperience(): { company: string; jobTitle: string; startDate
 }
 
 
-// Collect form data
-let formData: Object | undefined = {
-  fName: (document.getElementById("fName") as HTMLInputElement).value,
-  lName: (document.getElementById("lName") as HTMLInputElement).value,
-  dob: (document.getElementById("dob") as HTMLInputElement).value,
-  gender: getSelectedGender(),
-  religion: (document.getElementById("religion") as HTMLInputElement).value,
-  address: (document.getElementById("address") as HTMLInputElement).value,
-  email: (document.getElementById("email") as HTMLInputElement).value,
-  phone: (document.getElementById("phone") as HTMLInputElement).value,
-  linkedin: (document.getElementById("linkedin") as HTMLInputElement).value,
-  github: (document.getElementById("github") as HTMLInputElement).value,
-  objective: (document.getElementById("objective") as HTMLTextAreaElement).value,
-  occupation: (document.getElementById("occupation") as HTMLInputElement).value,
-  fileInput: (document.getElementById('fileInput') as HTMLInputElement).value,
+// Updated generateCV function to handle the profile picture
 
+function generateCV() {
+  // Get form values
+  const fName = (document.getElementById("fName") as HTMLInputElement).value;
+  const lName = (document.getElementById("lName") as HTMLInputElement).value;
+  const dob = (document.getElementById("dob") as HTMLInputElement).value;
+  const gender = getSelectedGender();
+  const religion = (document.getElementById("religion") as HTMLInputElement).value;
+  const address = (document.getElementById("address") as HTMLInputElement).value;
+  const email = (document.getElementById("email") as HTMLInputElement).value;
+  const phone = (document.getElementById("phone") as HTMLInputElement).value;
+  const linkedin = (document.getElementById("linkedin") as HTMLInputElement).value;
+  const github = (document.getElementById("github") as HTMLInputElement).value;
+  const objective = (document.getElementById("objective") as HTMLTextAreaElement).value;
+  const occupation = (document.getElementById("occupation") as HTMLInputElement).value;
+  
   // Collect skills, education, and work experience
-  skills: collectSkills(),
-  educationEntries: collectEducation(),
-  workEntries: collectWorkExperience(),
-};
+  const skills = collectSkills();
+  const educationEntries = collectEducation();
+  const workEntries = collectWorkExperience();
 
-// Function to render the resume based on the selected template and form data
+  const profilePicInput = document.getElementById('profilePic') as HTMLInputElement;
 
-function renderTemplate(data, templateId) {
-  const resumeOutput = document.getElementById('resume-output')!;
-  // Clear any previous content
-  resumeOutput.innerHTML = '';
+  // Use FileReader to load the profile picture, if provided
+  if (profilePicInput.files && profilePicInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const profilePicSrc = e.target?.result as string;
+      renderCV(fName, lName, dob, gender, religion, address, email, phone, linkedin, github, objective, occupation, skills, educationEntries, workEntries, profilePicSrc);
+    };
+    reader.readAsDataURL(profilePicInput.files[0]);
+  } else {
+    // If no profile picture is provided, call renderCV without profile picture
+    renderCV(fName, lName, dob, gender, religion, address, email, phone, linkedin, github, objective, occupation, skills, educationEntries, workEntries, null);
+  }
+}
 
-  // Template rendering logic based on selected template
-  if (templateId === 'template1') {
-      resumeOutput.innerHTML = 
-          `
+// Separate function to render the CV layout with all collected data
+function renderCV(
+  fName: string, lName: string, dob: string, gender: string, religion: string,
+  address: string, email: string, phone: string, linkedin: string, github: string,
+  objective: string, occupation: string, skills: string[],
+  educationEntries: { degree: string; institution: string; year: string }[],
+  workEntries: { company: string; jobTitle: string; startDate: string; endDate: string }[],
+  profilePicSrc: string | null
+) {
+  const cvHTML = `
   <div class="resume-container">
       <div class="cv-container">
             <div class="profile-section">
                 <div class="quote-section">
-                    <p> <span>“</span>${data.objective}</p>
+                    <p> <span>“</span>${objective}</p>
                 </div>
                <div class="profile-left">
-                <div class="profile-image"></div>
+                <div class="profile-image"> ${profilePicSrc ? `<img src="${profilePicSrc}" alt="Profile Picture" class="profile-image">` : ''}</div>
                <div class="profile-text">
-                <h1>{data.fName}</h1>
-                <h2>{data.lName}</h2>
-                <p class="job-title">{data.occupation}<br>{data.address}</p>
+                <h1>${fName}</h1>
+                <h2>${lName}</h2>
+                <p class="job-title"> ${occupation}<br> ${address}</p>
                </div>
                </div>
             </div>
             <div class="sub-container">
-                  Left Column  
             <div class="cv-left">
-                
                 <div class="contact-section">
                     <h3>Contact Info</h3>
-                    <p>• <a href="mailto:${data.email}">${data.email}</a></p>
-                    <p>• ${data.phone}</p>
-                    <p>• <a href="${data.linkedin}" target="_blank">LinkedIn Profile</a></p>
-                    <p>• GitHub: <a href="${data.github}" target="_blank">GitHub Profile</a></p>
+                    <p>• <a href="mailto:${ email}">${ email}</a></p>
+                    <p>• ${ phone}</p>
+                    <p>• <a href="${ linkedin}" target="_blank">LinkedIn Profile</a></p>
+                    <p>• GitHub: <a href="${ github}" target="_blank">GitHub Profile</a></p>
                 </div>
                 <div class="personal-section">
                     <h3>Personal Information</h3>
-                  <p>• Date-of-birth: ${data.dob}
+                  <p>• Date-of-birth: ${ dob}
                     </p>
-                  <p>• Religion: ${data.religion} 
+                  <p>• Religion: ${ religion} 
                     </p>
-                  <p>• Gender: ${data.gender} 
+                  <p>• Gender: ${ gender} 
                     </p>
                 </div>
         
@@ -201,18 +214,17 @@ function renderTemplate(data, templateId) {
                     <h2>Skills</h2>
                     <h3>Professional</h3>
                     <ul>
-                         ${data.skills.map(skill => `<li>${skill}</li>`).join('')}
+                         ${ skills.map(skill => `<li>${skill}</li>`).join('')}
                     </ul>
                 </div>
             </div>
         <hr>
-              Right Column  
             <div class="cv-right">
 
                 <div class="education-section">
                     <h2>Education</h2>
                 <ul>
-                     ${data.educationEntries
+                     ${ educationEntries
                       .map(
                         (entry) => `
                       <li>
@@ -228,11 +240,11 @@ function renderTemplate(data, templateId) {
                 <div class="experience-section">
                     <h2>Experience</h2>
                       <ul>
-                        ${data.workEntries
+                        ${workEntries
                           .map(
                             (entry) => `
                           <li>
-                            <p>${entry.startDate} - {entry.endDate}</p>
+                            <p>${entry.startDate} - ${entry.endDate}</p>
                               <strong>${entry.company}</strong>
                                   <p>${entry.jobTitle}</p>
                           </li>`
@@ -242,184 +254,16 @@ function renderTemplate(data, templateId) {
                 </div>
             </div>
             </div>
-        </div>`       
-      ;
-  } else if (templateId === 'template2') {
-      resumeOutput.innerHTML = `
-          <div class="template2 selected-template">
-              <header>
-                  <h1>${data.name}</h1>
-                  <h3>${data.jobTitle}</h3>
-              </header>
-              <section>
-                  <h2>Contact Information</h2>
-                  <p>${data.contact}</p>
-              </section>
-              <section>
-                  <h2>Experience</h2>
-                  <p>${data.experience}</p>
-              </section>
-              <section>
-                  <h2>Education</h2>
-                  <p>${data.education}</p>
-              </section>
-              <section>
-                  <h2>Skills</h2>
-                  <p>${data.skills}</p>
-              </section>
-          </div>
-      `;
-  } else if (templateId === 'template3') {
-      resumeOutput.innerHTML = `
-          <div class="template3 selected-template">
-              <header>
-                  <h1>${data.name}</h1>
-                  <p><strong>Job Title:</strong> ${data.jobTitle}</p>
-                  <p><strong>Contact:</strong> ${data.contact}</p>
-              </header>
-              <div class="content">
-                  <div class="section">
-                      <h3>Experience</h3>
-                      <p>${data.experience}</p>
-                  </div>
-                  <div class="section">
-                      <h3>Education</h3>
-                      <p>${data.education}</p>
-                  </div>
-                  <div class="section">
-                      <h3>Skills</h3>
-                      <p>${data.skills}</p>
-                  </div>
-              </div>
-          </div>
-        `;
-     } else if (templateId === 'template4') {
-      resumeOutput.innerHTML = 
-      `
-<div class="resume-container">
-  <header class="header">
-      <h1>${data.fName} ${data.lName}</h1>
-      <p>${data.occupation} | ${data.address}</p>
-  </header>
+        </div>
+  `;
 
-  <div class="resume-content">
-      <div class="left-side">
-          <section class="contact-info">
-              <h2>Contact Information</h2>
-              <p>Email: <a href="mailto:${data.email}">${data.email}</a></p>
-              <p>Phone: ${data.phone}</p>
-              <p>LinkedIn: <a href="${data.linkedin}" target="_blank">LinkedIn Profile</a></p>
-              <p>GitHub: <a href="${data.github}" target="_blank">GitHub Profile</a></p>
-          </section>
-
-          <section class="personal-info">
-              <h2>Personal Information</h2>
-              <p>Date-of-birth: ${data.dob}</p>
-              <p>Religion: ${data.religion}</p>
-              <p>Gender: ${data.gender}</p>
-          </section>
-
-          <section class="objective">
-              <h2>Objective</h2>
-              <p>${data.objective}</p>
-          </section>
-      </div>
-
-      <div class="right-side">
-          <section class="skills">
-              <h2>Skills</h2>
-              <ul>
-                  ${data.skills.map(skill => `<li>${skill}</li>`).join('')}
-              </ul>
-          </section>
-
-           <section class="education">
-                <h2>Education</h2>
-                <ol>
-                    ${data.educationEntries
-                      .map(
-                        (entry) => `
-                      <li>
-                          <strong>${entry.degree}</strong>
-                          <ul>
-                              <li>${entry.institution}</li>
-                      <li>${entry.year}</li>
-                          </ul>
-                      </li>`
-                      )
-                      .join('')}
-                </ol>
-                <br> 
-            </section>
-
-           <section class="experience">
-                <h2>Experience</h2>
-                 <ol>
-                    ${data.workEntries
-                      .map(
-                        (entry) => `
-                      <li>
-                          <strong>${entry.company}</strong>
-                          <ul>
-                              <li>${entry.jobTitle}</li>
-                              <li>Start Date: ${entry.startDate}</li>
-                              <li>End Date: ${entry.endDate}</li>
-                          </ul>
-                      </li>`
-                      )
-                      .join('')}
-                </ol>
-            </section>
-
-      </div>
-  </div>
-
-  <footer class="footer">
-      <p>Find me on <a href="mailto:${data.email}">Email</a> | <a href="${data.github}" target="_blank">GitHub</a></p>
-  </footer>
-</div>`
-  ;
-     } else {
-      resumeOutput.innerHTML = `
-      Template not found ${selectedTemplate}`
-     }
-};
-
-// Variables to store selected template and form data
-let selectedTemplate: string | null = null;
-
-// Get template options and set up click event for template selection
-function handleTamplateSelection(buttonIds:string[]): string | undefined {
-  let selectedId: string| undefined;
-
-  buttonIds.forEach((id) => {
-    const button = document.getElementById(id);
-    if (button) {
-      button.addEventListener('click', () => {
-        selectedId = id;
-        renderTemplate(formData, selectedId);
-        selectedTemplate = selectedId;
-      });
-    }
-  });
-  return selectedId;
+  // Hide the form and display the CV
+  const formContainer = document.querySelector(".container") as HTMLElement;
+  formContainer.style.display = "none"; // Hide the form
+  const cvContainer = document.querySelector(".resume-output") as HTMLElement;
+  cvContainer.innerHTML = cvHTML; // Display the CV
 }
 
-
-// Reference to the submit button
-const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
-
-// Submit handler
-submitButton.addEventListener('click', (event) => {
-
-  if (!selectedTemplate) {
-    alert("Please select a template before.");
-    event.preventDefault(); // Stop form submission
-    return;
-  } 
-
-  const buttonIds = ['template-1','template-2','template-3','template-4'];
-  handleTamplateSelection(buttonIds);
-});
-
-console.log('selected template', selectedTemplate);
+// Event listener for the Generate CV button
+const generateCVBtn = document.querySelector(".generate-cv-btn") as HTMLButtonElement;
+generateCVBtn.addEventListener("click", generateCV);

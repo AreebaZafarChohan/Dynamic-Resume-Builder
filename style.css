@@ -266,125 +266,6 @@ button:hover {
   color: white;
 }
 
-/* Template 4 Styling start*/
-
-.resume-container {
-  max-width: 90%;
-  margin: auto;
-  background: #fff;
-  padding: 1.25rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
-}
-
-.resume-container .header {
-  text-align: center;
-  margin-bottom: 1.875rem;
-}
-
-.resume-container .header h1 {
-  font-size: 2.5rem;
-  color: #007bff;
-}
-
-.resume-container .header p {
-  font-size: 1.2rem;
-}
-
-.resume-container .resume-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-}
-
-.resume-container .left-side,
-.right-side {
-  flex: 1;
-}
-
-.resume-container .left-side {
-  padding-right: 1.25rem;
-}
-
-.resume-container .right-side {
-  padding-left: 1.25rem;
-  border-left: 0.0625rem solid #ccc;
-}
-
-.resume-container section {
-  margin-bottom: 1.875rem;
-  padding: 0.625rem;
-  background: #f9f9f9;
-  border-radius: 0.25rem;
-}
-
-.resume-container h2 {
-  background: #007bff;
-  color: white;
-  padding: 0.9375rem;
-  border-radius: 0.25rem;
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.resume-container p {
-  margin-bottom: 0.9375rem;
-}
-
-.resume-container a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.resume-container a:hover {
-  text-decoration: underline;
-}
-
-.resume-container h3 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 0.625rem;
-}
-
-.resume-container ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.resume-container ul li {
-  background: #e9ecef;
-  margin: 1rem 0;
-  padding: 1rem;
-  border-radius: 0.25rem;
-  width: 80%;
-  text-align: center;
-}
-
-.resume-container .footer {
-  text-align: center;
-  padding: 0.9375rem;
-  border-top: 0.0625rem solid #ccc;
-  margin-top: 1.875rem;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.resume-container .footer a {
-  text-decoration: none;
-  color: #007bff;
-  margin: 0 0.75rem;
-}
-
-.resume-container .footer a:hover {
-  text-decoration: underline;
-}
-/* Template 4 Styling end*/
-
 
 /* Template 1 Styling start*/
 .cv-container {
@@ -432,9 +313,10 @@ height: 100px;
 background-color: #ccc;
 border-radius: 50%;
 object-fit: cover;
+position: relative;
+top: -2rem;
+right: 0rem;
 }
-
-
 
 .profile-text {
   position: relative;
@@ -510,9 +392,192 @@ color: #363636;
 .cv-container li, .cv-container p {
 padding-top: 10px;
 }
+
+@media (max-width: 776px) {
+  .sub-container {
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 4rem;
+  }
+
+  hr {
+    display: none;
+  }
+
+  .cv-container h3 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-section h2, .education-section h2, .skills-section h2, .experience-section h2 {
+    font-size: 2rem;
+  }
+
+  .cv-container li, .cv-container p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 690px) {
+  .profile-image {
+    right: 5.5rem;
+  }
+
+  .profile-text {
+    right: 1rem;
+  }
+
+  .quote-section {
+    width: 14rem;
+    margin: 4rem 1rem;
+  }
+}
+
+@media (max-width: 579px) {
+  .profile-section {
+    margin: 2rem 0 ;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 2rem auto;
+    position: relative;
+    top: 5rem;
+    right: 6rem;
+  }
+  
+  .profile-image img{
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  top: -2rem;
+  right: 0rem;
+  }
+  
+  .profile-text {
+    position: relative;
+    top: 4rem;
+    right: 0rem;
+  }
+  
+  .profile-left h1{
+    color: rgb(73, 72, 72);
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    padding: 0.2rem 0;
+    font-size: 1.2rem;
+  }
+  
+  .profile-left h2{
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    padding: 0.2rem 0;
+    font-size: 1.7rem;
+  }
+  
+  .profile-left p {
+    font-size: 0.2rem;
+    margin: 1rem 0;
+    color: #000000;
+  }
+  
+  .quote-section {
+    width: 14rem;
+    margin: 4rem 1rem;
+  }
+  
+  .quote-section p {
+    color: white;
+    width: 8rem;
+  }
+  
+  .quote-section span {
+    font-size: 6rem;
+  }
+
+  .sub-container {
+    margin: 0 1rem;
+  }
+
+
+  .cv-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .contact-section h2, .education-section h2, .skills-section h2, .experience-section h2 {
+    font-size: 1.7rem;
+    text-align: start;
+    margin: 10px 0;
+    padding: 20px 0;
+  }
+
+  .cv-left .cv-right {
+    padding: 30px 0;
+  }
+
+  .cv-container li, .cv-container p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 474px) {
+  .profile-section {
+    margin: 1rem 0 ;
+  }
+
+  .profile-image {
+    right: 3rem;
+  }
+  
+  .profile-text {
+    left: -0.2rem;
+  }
+  
+  .profile-left h1{
+    font-size: 1rem;
+  }
+  
+  .profile-left h2{
+    font-size: 1.5rem;
+  }
+  
+  .quote-section {
+    margin: 4rem 0.5rem;
+  }
+  
+  .quote-section span {
+    font-size: 4rem;
+  }
+
+  .sub-container {
+    margin: 0 0.5rem;
+  }
+
+
+  .cv-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .contact-section h2, .education-section h2, .skills-section h2, .experience-section h2 {
+    font-size: 1.5rem;
+  }
+  .cv-container li, .cv-container p {
+    font-size: 1rem;
+    margin-bottom: 0rem;
+  }
+}
+
+
 /* Template 1 Styling end*/
-
-
 
 footer {
   text-align: center;
@@ -625,9 +690,6 @@ footer ul li a:hover{
     width: 80%;
   }
 
-  .resume-container {
-    max-width: 85%;
-  }
 }
 
 @media (max-width: 768px) {
@@ -661,31 +723,6 @@ footer ul li a:hover{
   #add-skill {
     position: relative;
     top: 0.5rem;
-  }
-
-  .resume-container .resume-content {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .resume-container .left-side,
-  .right-side {
-    padding: 0;
-    border-left: none;
-  }
-
-  .resume-container .right-side {
-    border: none;
-  }
-
-  .resume-container ul {
-    flex-direction: column;
-  }
-
-  .resume-container li {
-    width: 100%;
-    max-width: none;
-    text-align: center;
   }
 
   .footer-container {
@@ -731,24 +768,6 @@ footer ul li a:hover{
     font-size: 1.2rem;
     width: 15rem;
   }
-
-  .resume-container .header h1 {
-    font-size: 2rem;
-  }
-
-  .resume-container .header p {
-    font-size: 1rem;
-  }
-
-  .resume-container h2 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-
-  .resume-container h3 {
-    font-size: 1rem;
-  }
-
 
 }
 
