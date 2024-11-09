@@ -1,138 +1,155 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  :root {
-    --primary-color: #3B1E54;
-    --secandory-color: #9B7EBD;
-    --light-purple: #D4BEE4;
-    --text-color: #000000;
-    --bg-color: #ecd9fc;
-  }
-  
-  body {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-color);
-  }
-  
-  .resume-icon {
-    position: relative;
-    width: 60px;
-    height: 80px;
-    background-color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(1, 1, 1, 0.4);
-    overflow: hidden; 
-  }
-  
-  /* Folded corner */
-  .resume-icon::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    background-color: var(--secandory-color); 
-    clip-path: polygon(0 0, 100% 0, 0 100%);
-    border-top: 2px solid #ccc;
-    border-left: 2px solid #ccc;
-  }
-  
-  /* Lines inside the paper */
-  .resume-icon::before {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: 8px;
-    width: 80%;
-    height: 2px;
-    background-color: var(--text-color);
-    box-shadow: 0 10px 0 var(--text-color), 0 20px 0 var(--text-color), 0 30px 0 var(--text-color); 
-  }
-  
-  .resume-icon-text {
-    position: absolute;
-    left: 8rem;
-    top: 4rem;
-    color: var(--primary-color);
-    font-size: 2rem;
-    box-shadow: 0px 8px 10px rgba(1, 1, 1, 0.4);
-    padding: 0.5rem;
-  }
-
-  .resume-icon-text span {
-    color: var(--secandory-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-   
-  .heading {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 3rem;
-    text-align: center;
-  }
-  
-  nav ul {
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    gap: 5rem;
-    list-style: none;
-    margin: 2rem 20rem 0 0;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    font-size: 25px;
-    font-weight: bold;
-    padding: 30px 10px 0px 10px;
-    color: var(--primary-color);
-    border-bottom: 2px solid transparent;
-  }
-  
-  a:hover {
-    border-bottom: 4px solid var(--primary-color);
-  }
 
-  .template-section {
-    margin: 6rem;
-  }
+:root {
+  --primary-color: #3b1e54;
+  --secandory-color: #9b7ebd;
+  --light-purple: #d4bee4;
+  --text-color: #000000;
+  --bg-color: #ecd9fc;
+}
 
-  .template-section h1 {
-    text-align: center;
-    font-size: 3rem;
-    padding: 2rem;
-    color: var(--secandory-color);
-  }
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+}
 
-  .template-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--text-color);
-    text-shadow: 0px 4px 16px rgba(1, 1, 1, 0.4);
-  }
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3rem;
+  text-align: center;
+}
 
-  #template-selection {
-    display: flex;
-    justify-content: space-around;
-    gap: 3rem;
-    margin: 20px;
+.resume-icon {
+  position: relative;
+  width: 60px;
+  height: 80px;
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(1, 1, 1, 0.4);
+  overflow: hidden;
+}
+
+/* Folded corner */
+.resume-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-color: var(--secandory-color);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  border-top: 2px solid #ccc;
+  border-left: 2px solid #ccc;
+}
+
+/* Lines inside the paper */
+.resume-icon::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 8px;
+  width: 80%;
+  height: 2px;
+  background-color: #ccc;
+  box-shadow: 0 10px 0 #ccc, 0 20px 0 #ccc, 0 30px 0 #ccc;
+}
+
+.resume-icon-text {
+  position: absolute;
+  left: 8rem;
+  top: 4rem;
+  color: var(--primary-color);
+  font-size: 2rem;
+  box-shadow: 0px 8px 10px rgba(1, 1, 1, 0.4);
+  padding: 0.5rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.resume-icon-text span {
+  color: var(--secandory-color);
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  padding: 0 3rem;
+  padding-top: 4rem;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 5px;
+  transition: 0.4s;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5rem;
+  list-style: none;
+  margin: 2rem 20rem 0 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 30px 10px 0px 10px;
+  color: var(--primary-color);
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.4s ease-in-out;
+}
+
+a:hover {
+  border-bottom: 4px solid var(--primary-color);
+  cursor: pointer;
+}
+.template-section {
+  margin: 6rem;
+}
+
+.template-section h1 {
+  text-align: center;
+  font-size: 3rem;
+  padding: 2rem;
+  color: var(--secandory-color);
+}
+
+.template-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--text-color);
+  text-shadow: 0px 4px 16px rgba(1, 1, 1, 0.4);
+}
+
+#template-selection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin: 20px;
 }
 
 .template-option {
-    cursor: pointer;
-    text-align: center;
-    padding: 2rem;
-    border: 4px solid var(--secandory-color);
-    border-radius: 20px;
-    transition: transform 0.6s ease-in-out;
-    transform: scale(1);
+  cursor: pointer;
+  text-align: center;
+  padding: 2rem;
+  border: 4px solid var(--secandory-color);
+  border-radius: 20px;
+  transition: transform 0.6s ease-in-out;
+  transform: scale(1);
 }
 
 .template-option:hover {
@@ -145,83 +162,266 @@
   height: auto;
 }
 
-  .ok-btn {
-    display: flex;
-    flex-direction: row;
-    gap: 5rem;
-    padding: 1rem 2rem;
-  }
 
-  .ok-btn p {
-    font-size: 1.5rem;
-    padding: 1rem;
-  }
-
-  .ok-btn button a{
-    font-size: 1.5rem;
-    padding: 0.2rem 2rem;
-    font-weight: bold;
-    color: var(--secandory-color);
-    text-decoration: none;
-  }
-
-  .ok-btn button:hover{
-    color: white;
-    background-color: var(--primary-color);
-  }
-
-
-#resume-form, #resume-output {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
+.ok-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  padding: 2rem 2rem;
+  text-align: center;
+  justify-content: center;
 }
 
-.template1, .template2, .template3 {
-    display: none;
+.ok-btn p {
+  font-size: 1.5rem;
+  padding: 0.5rem;
 }
 
-.selected-template {
-    display: block;
+.ok-btn button {
+  font-size: 1.5rem;
+  padding: 0.2rem 2rem;
+  font-weight: bold;
+  color: var(--secandory-color);
+  text-decoration: none;
 }
 
-  footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: var(--primary-color);
-    color: white;
+.ok-btn a:hover {
+  text-decoration: none;
+}
+
+.ok-btn button:hover {
+  color: white;
+  background-color: var(--primary-color);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .footer-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
 }
 
 footer h3 {
-    font-size: 2rem;
-    padding: 2rem;
+  font-size: 2rem;
+  padding: 1rem;
 }
 
 footer ul {
-    list-style: none;
+  list-style: none;
 }
 
 footer ul li {
-    padding: 1rem;
+  padding: 0.4rem;
 }
 
 footer ul li a {
-    font-size: 1.5rem;
-    color: white;
-    text-decoration: none;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
 }
 
 .footer-bottom {
-    margin: 3rem;
-    font-size: 1.5rem;
+  margin: 3rem;
+  font-size: 1.5rem;
 }
 
-footer ul li a:hover{
-    text-decoration: underline;
+footer ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width:1675px) {
+  .template-section {
+    margin: 6rem 4rem;
+  }
+   #template-selection {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width:1300px) {
+  .template-section {
+    margin: 6rem 2rem;
+  }
+
+  #template-selection {
+    gap: 2rem;
+  }
+   
+}
+
+@media (max-width:1236px) {
+  .template-option {
+    padding: 1rem;
+  }
+  .template-option img {
+    width: 25rem;
+  }
+}
+
+@media (max-width:1110px) {
+  .template-section {
+    margin: 6rem 0.5rem;
+  }
+
+  #template-selection {
+    gap: 1rem;
+  }
+  
+}
+
+@media (max-width:960px) {
+  .template-section {
+    margin: 6rem 4rem;
+  }
+
+   #template-selection {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .template-option {
+    padding: 1rem;
+  }
+
+  .template-option img {
+    width: 30rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .template-section {
+    margin: 6rem 0.5rem;
+  }
+
+  .template-section h1 {
+    font-size: 2.5rem;
+    padding: 1rem;
+  }
+
+  .template-section h2 {
+    font-size: 2rem;
+  }
+
+  .ok-btn {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 580px) {
+  .template-option {
+    padding: 1rem;
+  }
+  .template-option img {
+    width: 22rem;
+  }
+}
+
+@media (max-width: 440px) {
+
+  .template-section h1, .template-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .template-option {
+    padding: 0.5rem;
+  }
+  .template-option img {
+    width: 18rem;
+  }
+}
+
+@media (max-width:1335px) {
+  footer h3 {
+      font-size: 1.5rem;
+  }
+
+  footer ul li a {
+      font-size: 1.2rem;
+  }
+  
+  .footer-bottom {
+      font-size: 1.2rem;
+  }
+}
+
+@media (max-width:1263px) {
+  .header {
+      gap: 10rem;
+  }
+
+  nav ul {
+      gap: 2.5rem;
+  }
+  nav ul li a {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 30px 0px ;
+      padding-bottom: 0;
+  }
+}
+
+@media (max-width: 1065px) {
+  .resume-icon {
+      top: 1.5rem;
+      left: 2rem;
+  }
+
+  nav {
+      width: 10rem;
+      margin: 0 2rem;
+  }
+
+  nav ul {
+      display: none; 
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      text-align: end;
+      gap: 1.5rem;
+      padding: 1rem 0;
+  }
+
+  .hamburger {
+      display: block;
+  }
+
+  .header {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1rem;
+  }
+}
+
+
+nav ul.active {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 490px) {
+
+  .resume-icon {
+      left: -4px;
+  }
+
+  .resume-icon-text {
+      left: 5rem;
+  }
 }

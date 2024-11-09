@@ -1,11 +1,11 @@
 // Selecting the hamburger menu, navbar, and nav links
-/*const hamburger = document.querySelector('.hamburger') as HTMLElement | null;
+const hamburger = document.querySelector('.hamburger') as HTMLElement | null;
 const navMenu = document.querySelector('nav ul') as HTMLElement | null;
 
 // Toggle class on click for responsive navigation
 hamburger?.addEventListener('click', () => {
   navMenu?.classList.toggle('active');
-}); */
+}); 
 
 
 // Function to add new skill fields
@@ -15,7 +15,7 @@ function addSkill(): void {
   skillDiv.classList.add("skill-entry"); // Added class for easier access
   skillDiv.innerHTML = `
         <input type="text" class="skill-input" placeholder="Enter a skill">
-        <button type="button" class="remove-btn">-</button>
+        <button type="button" class="remove-btn">_</button>
     `;
   container.appendChild(skillDiv);
 
@@ -35,7 +35,7 @@ function addEducation(): void {
         <input type="text" class="education-input" placeholder="Enter degree">
         <input type="text" class="education-input" placeholder="Enter institution">
         <input type="date" class="education-input">
-        <button type="button" class="remove-btn">-</button>
+        <button type="button" class="remove-btn">_</button>
     `;
   container.appendChild(educationDiv);
 
@@ -58,7 +58,7 @@ function addWorkExperience(): void {
         <input type="text" class="work-input" placeholder="Enter company">
         <input type="date" class="work-input" placeholder="Enter start date">
         <input type="date" class="work-input" placeholder="Enter end date">
-        <button type="button" class="remove-btn">-</button>
+        <button type="button" class="remove-btn">_</button>
     `;
   container.appendChild(workDiv);
 
@@ -142,6 +142,7 @@ let formData: Object | undefined = {
   github: (document.getElementById("github") as HTMLInputElement).value,
   objective: (document.getElementById("objective") as HTMLTextAreaElement).value,
   occupation: (document.getElementById("occupation") as HTMLInputElement).value,
+  fileInput: (document.getElementById('fileInput') as HTMLInputElement).value,
 
   // Collect skills, education, and work experience
   skills: collectSkills(),
@@ -161,87 +162,87 @@ function renderTemplate(data, templateId) {
       resumeOutput.innerHTML = 
           `
   <div class="resume-container">
-      <header class="header">
-          <h1>${data.fName} ${data.lName}</h1>
-          <p>${data.occupation} | ${data.address}</p>
-      </header>
+      <div class="cv-container">
+            <div class="profile-section">
+                <div class="quote-section">
+                    <p> <span>“</span>${data.objective}</p>
+                </div>
+               <div class="profile-left">
+                <div class="profile-image"></div>
+               <div class="profile-text">
+                <h1>{data.fName}</h1>
+                <h2>{data.lName}</h2>
+                <p class="job-title">{data.occupation}<br>{data.address}</p>
+               </div>
+               </div>
+            </div>
+            <div class="sub-container">
+                  Left Column  
+            <div class="cv-left">
+                
+                <div class="contact-section">
+                    <h3>Contact Info</h3>
+                    <p>• <a href="mailto:${data.email}">${data.email}</a></p>
+                    <p>• ${data.phone}</p>
+                    <p>• <a href="${data.linkedin}" target="_blank">LinkedIn Profile</a></p>
+                    <p>• GitHub: <a href="${data.github}" target="_blank">GitHub Profile</a></p>
+                </div>
+                <div class="personal-section">
+                    <h3>Personal Information</h3>
+                  <p>• Date-of-birth: ${data.dob}
+                    </p>
+                  <p>• Religion: ${data.religion} 
+                    </p>
+                  <p>• Gender: ${data.gender} 
+                    </p>
+                </div>
+        
+                <div class="skills-section">
+                    <h2>Skills</h2>
+                    <h3>Professional</h3>
+                    <ul>
+                         ${data.skills.map(skill => `<li>${skill}</li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+        <hr>
+              Right Column  
+            <div class="cv-right">
 
-      <div class="resume-content">
-          <div class="left-side">
-              <section class="contact-info">
-                  <h2>Contact Information</h2>
-                  <p>Email: <a href="mailto:${data.email}">${data.email}</a></p>
-                  <p>Phone: ${data.phone}</p>
-                  <p>LinkedIn: <a href="${data.linkedin}" target="_blank">LinkedIn Profile</a></p>
-                  <p>GitHub: <a href="${data.github}" target="_blank">GitHub Profile</a></p>
-              </section>
-
-              <section class="personal-info">
-                  <h2>Personal Information</h2>
-                  <p>Date-of-birth: ${data.dob}</p>
-                  <p>Religion: ${data.religion}</p>
-                  <p>Gender: ${data.gender}</p>
-              </section>
-
-              <section class="objective">
-                  <h2>Objective</h2>
-                  <p>${data.objective}</p>
-              </section>
-          </div>
-
-          <div class="right-side">
-              <section class="skills">
-                  <h2>Skills</h2>
-                  <ul>
-                      ${data.skills.map(skill => `<li>${skill}</li>`).join('')}
-                  </ul>
-              </section>
-
-               <section class="education">
+                <div class="education-section">
                     <h2>Education</h2>
-                    <ol>
-                        ${data.educationEntries
-                          .map(
-                            (entry) => `
-                          <li>
-                              <strong>${entry.degree}</strong>
-                              <ul>
-                                  <li>${entry.institution}</li>
-                          <li>${entry.year}</li>
-                              </ul>
-                          </li>`
-                          )
-                          .join('')}
-                    </ol>
-                    <br> 
-                </section>
+                <ul>
+                     ${data.educationEntries
+                      .map(
+                        (entry) => `
+                      <li>
+                          <strong>${entry.degree}</strong>
+                           <p>${entry.year}</p>
+                              <p>${entry.institution}</p>
+                      </li>`
+                      )
+                      .join('')} 
+                </ul>
+                </div>
 
-               <section class="experience">
+                <div class="experience-section">
                     <h2>Experience</h2>
-                     <ol>
+                      <ul>
                         ${data.workEntries
                           .map(
                             (entry) => `
                           <li>
+                            <p>${entry.startDate} - {entry.endDate}</p>
                               <strong>${entry.company}</strong>
-                              <ul>
-                                  <li>${entry.jobTitle}</li>
-                                  <li>Start Date: ${entry.startDate}</li>
-                                  <li>End Date: ${entry.endDate}</li>
-                              </ul>
+                                  <p>${entry.jobTitle}</p>
                           </li>`
                           )
                           .join('')}
-                    </ol>
-                </section>
-
-          </div>
-      </div>
-
-      <footer class="footer">
-          <p>Find me on <a href="mailto:${data.email}">Email</a> | <a href="${data.github}" target="_blank">GitHub</a></p>
-      </footer>
-  </div>`
+                    </ul> 
+                </div>
+            </div>
+            </div>
+        </div>`       
       ;
   } else if (templateId === 'template2') {
       resumeOutput.innerHTML = `
@@ -378,11 +379,14 @@ function renderTemplate(data, templateId) {
   </footer>
 </div>`
   ;
+     } else {
+      resumeOutput.innerHTML = `
+      Template not found ${selectedTemplate}`
      }
 };
 
 // Variables to store selected template and form data
-let selectedTemplate = '';
+let selectedTemplate: string | null = null;
 
 // Get template options and set up click event for template selection
 function handleTamplateSelection(buttonIds:string[]): string | undefined {
@@ -401,13 +405,15 @@ function handleTamplateSelection(buttonIds:string[]): string | undefined {
   return selectedId;
 }
 
+
 // Reference to the submit button
 const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
 
 // Submit handler
 submitButton.addEventListener('click', (event) => {
+
   if (!selectedTemplate) {
-    alert("Please select a template before submitting.");
+    alert("Please select a template before.");
     event.preventDefault(); // Stop form submission
     return;
   }
@@ -415,3 +421,5 @@ submitButton.addEventListener('click', (event) => {
   const buttonIds = ['template-1','template-2','template-3','template-4'];
   handleTamplateSelection(buttonIds);
 });
+
+console.log('selected template', selectedTemplate);

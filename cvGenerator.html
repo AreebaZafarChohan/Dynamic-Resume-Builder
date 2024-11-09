@@ -10,15 +10,23 @@
 
 <body>
 
-    <header class="heading">
-        <h2 class="resume-icon"> </h2>
+    <header class="header">
+        <div class="resume-icon"></div>
         <h2 class="resume-icon-text"><span>Quick</span>CV</h2>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="templates.html">Templates</a></li>
-                <li><a href="cvGenerator.html">Generate CV</a></li>
-            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="templates.html">Templates</a></li>
+                    <li><a href="cvGenerator.html">Generate CV</a></li>
+                    <li><a href="dummy.html">Dummy</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -54,6 +62,13 @@
                 <input type="text" id="address" placeholder="Enter your address">
             </div>
             <div>
+                <label for="occupation">Occupation</label>
+                <input type="text" id="occupation" placeholder="Enter your occupation or professional work">
+            </div>
+
+            <div>
+                <h2>Social Information</h2>
+<div>
                 <label for="email">Email</label>
                 <input type="email" id="email" placeholder="Enter your email">
             </div>
@@ -69,9 +84,10 @@
                 <label for="github">GitHub Account</label>
                 <input type="url" id="github" placeholder="Enter your GitHub URL">
             </div>
-            <div>
-                <label for="occupation">Occupation</label>
-                <input type="text" id="occupation" placeholder="Enter your occupation or professional work">
+            <div class="upload-image">
+                <label for="image">Upload Image</label>
+                <input type="file" id="fileInput">
+            </div>
             </div>
         </section>
 
@@ -88,7 +104,7 @@
                     <!-- Skill fields will be added here -->
                 </div>
                 <input type="text" class="skill-input" placeholder="Enter a skill">
-                <button type="button" class="remove-btn">-</button>
+                <button type="button" class="remove-btn">_</button>
                 <button id="add-skill">+</button>
             </section>
 
@@ -98,7 +114,7 @@
                     <input type="text" class="education-input" placeholder="Enter degree">
                     <input type="text" class="education-input" placeholder="Enter institution">
                     <input type="date" class="education-input">
-                    <button type="button" class="remove-btn">-</button>
+                    <button type="button" class="remove-btn">_</button>
                     <!--More Education fields will be added here -->
                 </div>
                 <button id="add-education">+</button>
@@ -111,7 +127,7 @@
                     <input type="text" class="work-input" placeholder="Enter company">
                     <input type="date" class="work-input" placeholder="Enter start date">
                     <input type="date" class="work-input" placeholder="Enter end date">
-                    <button type="button" class="remove-btn">-</button>
+                    <button type="button" class="remove-btn">_</button>
                     <!--More Work experience fields will be added here -->
                 </div>
                 <button id="add-work">+</button>

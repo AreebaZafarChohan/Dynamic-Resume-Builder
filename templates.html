@@ -7,15 +7,23 @@
     <title>Dynamic Resume Builder</title>
 </head>
 <body>
-    <header class="heading">
-        <h2 class="resume-icon"> </h2>
+    <header class="header">
+        <div class="resume-icon"></div>
         <h2 class="resume-icon-text"><span>Quick</span>CV</h2>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="templates.html">Templates</a></li>
-                <li><a href="cvGenerator.html">Generate CV</a></li>
-            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="templates.html">Templates</a></li>
+                    <li><a href="cvGenerator.html">Generate CV</a></li>
+                    <li><a href="dummy.html">Dummy</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -27,39 +35,35 @@
         </div>
         <div id="template-selection">
             <div class="template-option" data-template="template1">
-                <img src="images/template1.jpg" alt="Template 1">
+                <img src="images/template1.png" alt="Template 1">
                <div class="ok-btn">
                 <p>Template 1</p>
-                <a href="cvGenerator.html"><button class="selected-option" id="template-1" data-template="template1">Selected</button></a>
+                <a href="cvGenerator.html"><button class="selected-option" id="template1">Selected</button></a>
             </div>
             </div>
             <div class="template-option" data-template="template2">
                 <img src="images/template2.jpg" alt="Template 2">
                 <div class="ok-btn">
                     <p>Template 2</p>
-                    <a href="cvGenerator.html"><button id="template-2" onclick="selectTemplate('template-2')">Selected</button></a>
-                   </div>
+                    <a href="cvGenerator.html"><button class="selected-option" id="template2">Selected</button></a>
+                </div>
             </div>
             <div class="template-option" data-template="template3">
                 <img src="images/template3.png" alt="Template 3">
                 <div class="ok-btn">
                     <p>Template 3</p>
-                    <a href="cvGenerator.html"><button id="template-3" onclick="selectTemplate('template-3')">Selected</button></a>
-                   </div>
+                    <a href="cvGenerator.html"><button class="selected-option" id="template3">Selected</button></a>
+                </div>
+            </div>
+            <div class="template-option" data-template="template4">
+                <img src="images/template3.png" alt="Template 4">
+                <div class="ok-btn">
+                    <p>Template 3</p>
+                    <a href="cvGenerator.html"><button class="selected-option" id="template4">Selected</button></a>
+                </div>
             </div>
         </div>
        </section>
-    
-        <form id="resume-form">
-            <h2>Enter Your Details</h2>
-            <input type="text" id="name" placeholder="Full Name">
-            <input type="text" id="jobTitle" placeholder="Job Title">
-            <input type="text" id="contact" placeholder="Contact Information">
-            <!-- Add more fields for experience, education, skills, etc. -->
-            <button type="submit">Generate Resume</button>
-        </form>
-    
-        <div id="resume-output"></div>
     
     </main>
 

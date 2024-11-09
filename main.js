@@ -1,18 +1,17 @@
-// Selecting the hamburger menu, navbar, and nav links
-/*const hamburger = document.querySelector('.hamburger') as HTMLElement | null;
-const navMenu = document.querySelector('nav ul') as HTMLElement | null;
-
-// Toggle class on click for responsive navigation
-hamburger?.addEventListener('click', () => {
-  navMenu?.classList.toggle('active');
-}); */
 var _a, _b, _c;
+// Selecting the hamburger menu, navbar, and nav links
+var hamburger = document.querySelector('.hamburger');
+var navMenu = document.querySelector('nav ul');
+// Toggle class on click for responsive navigation
+hamburger === null || hamburger === void 0 ? void 0 : hamburger.addEventListener('click', function () {
+    navMenu === null || navMenu === void 0 ? void 0 : navMenu.classList.toggle('active');
+});
 // Function to add new skill fields
 function addSkill() {
     var container = document.getElementById("skills-container");
     var skillDiv = document.createElement("div");
     skillDiv.classList.add("skill-entry"); // Added class for easier access
-    skillDiv.innerHTML = "\n        <input type=\"text\" class=\"skill-input\" placeholder=\"Enter a skill\">\n        <button type=\"button\" class=\"remove-btn\">-</button>\n    ";
+    skillDiv.innerHTML = "\n        <input type=\"text\" class=\"skill-input\" placeholder=\"Enter a skill\">\n        <button type=\"button\" class=\"remove-btn\">_</button>\n    ";
     container.appendChild(skillDiv);
     // Add event listener to remove button
     var removeBtn = skillDiv.querySelector(".remove-btn");
@@ -25,7 +24,7 @@ function addEducation() {
     var container = document.getElementById("education-container");
     var educationDiv = document.createElement("div");
     educationDiv.classList.add("education-entry"); // Added class for easier access
-    educationDiv.innerHTML = "\n        <input type=\"text\" class=\"education-input\" placeholder=\"Enter degree\">\n        <input type=\"text\" class=\"education-input\" placeholder=\"Enter institution\">\n        <input type=\"date\" class=\"education-input\">\n        <button type=\"button\" class=\"remove-btn\">-</button>\n    ";
+    educationDiv.innerHTML = "\n        <input type=\"text\" class=\"education-input\" placeholder=\"Enter degree\">\n        <input type=\"text\" class=\"education-input\" placeholder=\"Enter institution\">\n        <input type=\"date\" class=\"education-input\">\n        <button type=\"button\" class=\"remove-btn\">_</button>\n    ";
     container.appendChild(educationDiv);
     // Add event listener to remove button
     var removeBtn = educationDiv.querySelector(".remove-btn");
@@ -38,7 +37,7 @@ function addWorkExperience() {
     var container = document.getElementById("work-container");
     var workDiv = document.createElement("div");
     workDiv.classList.add("work-entry"); // Added class for easier access
-    workDiv.innerHTML = "\n        <input type=\"text\" class=\"work-input\" placeholder=\"Enter job title\">\n        <input type=\"text\" class=\"work-input\" placeholder=\"Enter company\">\n        <input type=\"date\" class=\"work-input\" placeholder=\"Enter start date\">\n        <input type=\"date\" class=\"work-input\" placeholder=\"Enter end date\">\n        <button type=\"button\" class=\"remove-btn\">-</button>\n    ";
+    workDiv.innerHTML = "\n        <input type=\"text\" class=\"work-input\" placeholder=\"Enter job title\">\n        <input type=\"text\" class=\"work-input\" placeholder=\"Enter company\">\n        <input type=\"date\" class=\"work-input\" placeholder=\"Enter start date\">\n        <input type=\"date\" class=\"work-input\" placeholder=\"Enter end date\">\n        <button type=\"button\" class=\"remove-btn\">_</button>\n    ";
     container.appendChild(workDiv);
     // Add event listener to remove button
     var removeBtn = workDiv.querySelector(".remove-btn");
@@ -104,6 +103,7 @@ var formData = {
     github: document.getElementById("github").value,
     objective: document.getElementById("objective").value,
     occupation: document.getElementById("occupation").value,
+    fileInput: document.getElementById('fileInput').value,
     // Collect skills, education, and work experience
     skills: collectSkills(),
     educationEntries: collectEducation(),
@@ -117,11 +117,11 @@ function renderTemplate(data, templateId) {
     // Template rendering logic based on selected template
     if (templateId === 'template1') {
         resumeOutput.innerHTML =
-            "\n  <div class=\"resume-container\">\n      <header class=\"header\">\n          <h1>".concat(data.fName, " ").concat(data.lName, "</h1>\n          <p>").concat(data.occupation, " | ").concat(data.address, "</p>\n      </header>\n\n      <div class=\"resume-content\">\n          <div class=\"left-side\">\n              <section class=\"contact-info\">\n                  <h2>Contact Information</h2>\n                  <p>Email: <a href=\"mailto:").concat(data.email, "\">").concat(data.email, "</a></p>\n                  <p>Phone: ").concat(data.phone, "</p>\n                  <p>LinkedIn: <a href=\"").concat(data.linkedin, "\" target=\"_blank\">LinkedIn Profile</a></p>\n                  <p>GitHub: <a href=\"").concat(data.github, "\" target=\"_blank\">GitHub Profile</a></p>\n              </section>\n\n              <section class=\"personal-info\">\n                  <h2>Personal Information</h2>\n                  <p>Date-of-birth: ").concat(data.dob, "</p>\n                  <p>Religion: ").concat(data.religion, "</p>\n                  <p>Gender: ").concat(data.gender, "</p>\n              </section>\n\n              <section class=\"objective\">\n                  <h2>Objective</h2>\n                  <p>").concat(data.objective, "</p>\n              </section>\n          </div>\n\n          <div class=\"right-side\">\n              <section class=\"skills\">\n                  <h2>Skills</h2>\n                  <ul>\n                      ").concat(data.skills.map(function (skill) { return "<li>".concat(skill, "</li>"); }).join(''), "\n                  </ul>\n              </section>\n\n               <section class=\"education\">\n                    <h2>Education</h2>\n                    <ol>\n                        ").concat(data.educationEntries
-                .map(function (entry) { return "\n                          <li>\n                              <strong>".concat(entry.degree, "</strong>\n                              <ul>\n                                  <li>").concat(entry.institution, "</li>\n                          <li>").concat(entry.year, "</li>\n                              </ul>\n                          </li>"); })
-                .join(''), "\n                    </ol>\n                    <br> \n                </section>\n\n               <section class=\"experience\">\n                    <h2>Experience</h2>\n                     <ol>\n                        ").concat(data.workEntries
-                .map(function (entry) { return "\n                          <li>\n                              <strong>".concat(entry.company, "</strong>\n                              <ul>\n                                  <li>").concat(entry.jobTitle, "</li>\n                                  <li>Start Date: ").concat(entry.startDate, "</li>\n                                  <li>End Date: ").concat(entry.endDate, "</li>\n                              </ul>\n                          </li>"); })
-                .join(''), "\n                    </ol>\n                </section>\n\n          </div>\n      </div>\n\n      <footer class=\"footer\">\n          <p>Find me on <a href=\"mailto:").concat(data.email, "\">Email</a> | <a href=\"").concat(data.github, "\" target=\"_blank\">GitHub</a></p>\n      </footer>\n  </div>");
+            "\n  <div class=\"resume-container\">\n      <div class=\"cv-container\">\n            <div class=\"profile-section\">\n                <div class=\"quote-section\">\n                    <p> <span>\u201C</span>".concat(data.objective, "</p>\n                </div>\n               <div class=\"profile-left\">\n                <div class=\"profile-image\"></div>\n               <div class=\"profile-text\">\n                <h1>{data.fName}</h1>\n                <h2>{data.lName}</h2>\n                <p class=\"job-title\">{data.occupation}<br>{data.address}</p>\n               </div>\n               </div>\n            </div>\n            <div class=\"sub-container\">\n                  Left Column  \n            <div class=\"cv-left\">\n                \n                <div class=\"contact-section\">\n                    <h3>Contact Info</h3>\n                    <p>\u2022 <a href=\"mailto:").concat(data.email, "\">").concat(data.email, "</a></p>\n                    <p>\u2022 ").concat(data.phone, "</p>\n                    <p>\u2022 <a href=\"").concat(data.linkedin, "\" target=\"_blank\">LinkedIn Profile</a></p>\n                    <p>\u2022 GitHub: <a href=\"").concat(data.github, "\" target=\"_blank\">GitHub Profile</a></p>\n                </div>\n                <div class=\"personal-section\">\n                    <h3>Personal Information</h3>\n                  <p>\u2022 Date-of-birth: ").concat(data.dob, "\n                    </p>\n                  <p>\u2022 Religion: ").concat(data.religion, " \n                    </p>\n                  <p>\u2022 Gender: ").concat(data.gender, " \n                    </p>\n                </div>\n        \n                <div class=\"skills-section\">\n                    <h2>Skills</h2>\n                    <h3>Professional</h3>\n                    <ul>\n                         ").concat(data.skills.map(function (skill) { return "<li>".concat(skill, "</li>"); }).join(''), "\n                    </ul>\n                </div>\n            </div>\n        <hr>\n              Right Column  \n            <div class=\"cv-right\">\n\n                <div class=\"education-section\">\n                    <h2>Education</h2>\n                <ul>\n                     ").concat(data.educationEntries
+                .map(function (entry) { return "\n                      <li>\n                          <strong>".concat(entry.degree, "</strong>\n                           <p>").concat(entry.year, "</p>\n                              <p>").concat(entry.institution, "</p>\n                      </li>"); })
+                .join(''), " \n                </ul>\n                </div>\n\n                <div class=\"experience-section\">\n                    <h2>Experience</h2>\n                      <ul>\n                        ").concat(data.workEntries
+                .map(function (entry) { return "\n                          <li>\n                            <p>".concat(entry.startDate, " - {entry.endDate}</p>\n                              <strong>").concat(entry.company, "</strong>\n                                  <p>").concat(entry.jobTitle, "</p>\n                          </li>"); })
+                .join(''), "\n                    </ul> \n                </div>\n            </div>\n            </div>\n        </div>");
     }
     else if (templateId === 'template2') {
         resumeOutput.innerHTML = "\n          <div class=\"template2 selected-template\">\n              <header>\n                  <h1>".concat(data.name, "</h1>\n                  <h3>").concat(data.jobTitle, "</h3>\n              </header>\n              <section>\n                  <h2>Contact Information</h2>\n                  <p>").concat(data.contact, "</p>\n              </section>\n              <section>\n                  <h2>Experience</h2>\n                  <p>").concat(data.experience, "</p>\n              </section>\n              <section>\n                  <h2>Education</h2>\n                  <p>").concat(data.education, "</p>\n              </section>\n              <section>\n                  <h2>Skills</h2>\n                  <p>").concat(data.skills, "</p>\n              </section>\n          </div>\n      ");
@@ -137,10 +137,13 @@ function renderTemplate(data, templateId) {
                 .map(function (entry) { return "\n                      <li>\n                          <strong>".concat(entry.company, "</strong>\n                          <ul>\n                              <li>").concat(entry.jobTitle, "</li>\n                              <li>Start Date: ").concat(entry.startDate, "</li>\n                              <li>End Date: ").concat(entry.endDate, "</li>\n                          </ul>\n                      </li>"); })
                 .join(''), "\n                </ol>\n            </section>\n\n      </div>\n  </div>\n\n  <footer class=\"footer\">\n      <p>Find me on <a href=\"mailto:").concat(data.email, "\">Email</a> | <a href=\"").concat(data.github, "\" target=\"_blank\">GitHub</a></p>\n  </footer>\n</div>");
     }
+    else {
+        resumeOutput.innerHTML = "\n      Template not found ".concat(selectedTemplate);
+    }
 }
 ;
 // Variables to store selected template and form data
-var selectedTemplate = '';
+var selectedTemplate = null;
 // Get template options and set up click event for template selection
 function handleTamplateSelection(buttonIds) {
     var selectedId;
@@ -161,10 +164,11 @@ var submitButton = document.getElementById('submit-button');
 // Submit handler
 submitButton.addEventListener('click', function (event) {
     if (!selectedTemplate) {
-        alert("Please select a template before submitting.");
+        alert("Please select a template before.");
         event.preventDefault(); // Stop form submission
         return;
     }
     var buttonIds = ['template-1', 'template-2', 'template-3', 'template-4'];
     handleTamplateSelection(buttonIds);
 });
+console.log('selected template', selectedTemplate);
