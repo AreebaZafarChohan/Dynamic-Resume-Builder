@@ -458,10 +458,151 @@ footer ul li a:hover{
     }
 }
 
+@media (max-width:969px) {
+
+    .how-it-works-section ol {
+        grid-template-columns: 1fr;
+    }
+
+    .why-choose-us-section {
+        justify-content: start;
+        align-items: start;
+        margin: 4rem 1rem;
+    }
+
+    .why-choose-us-section h3 {
+        text-align: start;
+        margin: 2rem 1.5rem;
+    }
+    
+    .why-choose-us-section ul {
+        margin-left: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .footer-container {
         grid-template-columns: 1fr;
       }
+
+      .welcome-section {
+        padding: 6rem 2rem;
+        font-size: 2.5rem;
+    }
+    
+    .welcome-section p {
+        font-size: 2.5rem;
+    }
+    
+    button a {
+        font-size: 1.5rem;
+    }
+
+    .benefits-section {
+        margin: 2rem 2rem;
+        gap: 5rem;
+    }
+    
+    .benefits-section img {
+        width: 30rem;
+    }
+    
+    .benefits-section h3 {
+        font-size: 3rem;
+        padding: 2rem 1rem;
+    }
+    
+    
+    .benefits-section ul {
+        gap: 2rem;
+    }
+    
+    .benefits-section ul li span {
+        font-size: 1.5rem;
+    }
+    
+    .benefits-section ul li {
+        font-size: 1.4rem;
+        padding: 1rem 0.5rem;
+    }
+    
+    
+    .how-it-works-section {
+        margin: 8rem 3rem;
+        text-align: center;
+    }
+    
+    .how-it-works-section h3 {
+        font-size: 1.6rem;
+        padding: 0 1rem;
+    }
+    
+    .how-it-works-section h4 {
+        font-size: 2.5rem;
+        padding: 0 1rem;
+    }
+
+    .how-it-works-section ol li h5 {
+        font-size: 2rem;
+    }
+
+    .why-choose-us-section h3 {
+        font-size: 2.7rem;
+        text-align: center;
+    }
+}
+
+@media (max-width:555px) {
+    .benefits-section img {
+        width: 20rem;
+    }
+
+    .welcome-section {
+        padding: 6rem 1rem;
+        font-size: 2rem;
+    }
+    
+    .welcome-section p {
+        font-size: 2rem;
+    }
+    
+    button a {
+        font-size: 1.2rem;
+    }
+
+    .benefits-section {
+        margin: 2rem 4rem;
+        gap: 4rem;
+    }
+    
+    .benefits-section h3 {
+        font-size: 2rem;
+        padding: 2rem 1rem;
+    }
+    
+    
+    .benefits-section ul {
+        gap: 2rem;
+        grid-template-columns: 1fr;
+    }
+    
+    .how-it-works-section {
+        margin: 8rem 2rem;
+    }
+    
+    .how-it-works-section h3 {
+        font-size: 1.4rem;
+    }
+    
+    .how-it-works-section h4 {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    .why-choose-us-section h3 {
+        font-size: 2rem;
+        text-align: center;
+    }
 }
 
 nav ul.active {
@@ -480,5 +621,14 @@ nav ul.active {
 
     .resume-icon-text {
         left: 5rem;
+    }
+
+    .benefits-section {
+        margin: 2rem 1rem;
+        gap: 5rem;
+    }
+    
+    .benefits-section img {
+        width: 20rem;
     }
 }

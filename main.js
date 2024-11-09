@@ -163,11 +163,11 @@ function handleTamplateSelection(buttonIds) {
 var submitButton = document.getElementById('submit-button');
 // Submit handler
 submitButton.addEventListener('click', function (event) {
-    if (!selectedTemplate) {
-        alert("Please select a template before.");
-        event.preventDefault(); // Stop form submission
-        return;
-    }
+    /*if (!selectedTemplate) {
+      alert("Please select a template before.");
+      event.preventDefault(); // Stop form submission
+      return;
+    } */
     var buttonIds = ['template-1', 'template-2', 'template-3', 'template-4'];
     handleTamplateSelection(buttonIds);
 });

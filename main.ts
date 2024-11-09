@@ -416,7 +416,7 @@ submitButton.addEventListener('click', (event) => {
     alert("Please select a template before.");
     event.preventDefault(); // Stop form submission
     return;
-  }
+  } 
 
   const buttonIds = ['template-1','template-2','template-3','template-4'];
   handleTamplateSelection(buttonIds);
